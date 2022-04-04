@@ -2,12 +2,12 @@ package com.example.demo.mapper;
 
 import com.example.demo.entity.User;
 import org.beetl.sql.mapper.BaseMapper;
-import org.beetl.sql.mapper.annotation.Sql;
+import org.beetl.sql.mapper.annotation.Template;
 
 import java.util.List;
 
 public interface UserMapper extends BaseMapper<User> {
-    @Sql("""
+    @Template("""
         select * 
         from user 
         where age = #{age}
@@ -15,7 +15,7 @@ public interface UserMapper extends BaseMapper<User> {
     """)
     List<User> listByAge(Integer age);
 
-    @Sql("""
+    @Template("""
         -- 我是注释
         select *
         from sys_user u
