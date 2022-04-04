@@ -1,7 +1,7 @@
 package com.example.demo;
 
 
-import com.example.demo.util.GenCodeAndDocUtils;
+import com.example.demo.util.GenUtils;
 import lombok.extern.java.Log;
 import org.beetl.sql.core.SQLManager;
 import org.junit.jupiter.api.Test;
@@ -25,9 +25,9 @@ class GenCodeApplicationTests {
     String password;
 
     String tplPath = "/src/test/resources/templates/";
-    String basePackageName = "com.ibeetlcodegen.demo";
+    String basePackageName = "com.beetlsqlcodegen.demo";
 
-    // ÒªÉú³ÉµÄ±í¸ñÃû
+    // è¦ç”Ÿæˆçš„è¡¨æ ¼å
     List<String> tableNames = Arrays.asList(
             "user"
             // , "user_copy"
@@ -35,15 +35,15 @@ class GenCodeApplicationTests {
 
     @Test
     void genCode() {
-        // //ÎªÁË¼òµ¥Æğ¼û£¬Á©¸ösqlManager¶¼À´×ÔÍ¬Ò»¸öÊı¾İÔ´£¬Êµ¼ÊÊÇ²»Í¬Êı¾İ¿â£¬ÉõÖÁÊÇNOSQL
-        SQLManager sqlManager = GenCodeAndDocUtils.getDataSource(driver, url, userName, password);
-        GenCodeAndDocUtils.initGroupTemplate(tplPath);
+        // //ä¸ºäº†ç®€å•èµ·è§ï¼Œä¿©ä¸ªsqlManageréƒ½æ¥è‡ªåŒä¸€ä¸ªæ•°æ®æºï¼Œå®é™…æ˜¯ä¸åŒæ•°æ®åº“ï¼Œç”šè‡³æ˜¯NOSQL
+        SQLManager sqlManager = GenUtils.getDataSource(driver, url, userName, password);
+        GenUtils.initGroupTemplate(tplPath);
 
         if (tableNames.size() > 0) {
             tableNames.stream().forEach(tableName -> {
-                // Éú³É´úÂë
-                GenCodeAndDocUtils.genCode(sqlManager, basePackageName, tableName);
-                GenCodeAndDocUtils.genDoc(sqlManager, basePackageName, tableName);
+                // ç”Ÿæˆä»£ç 
+                GenUtils.genCode(sqlManager, basePackageName, tableName);
+                GenUtils.genDoc(sqlManager, basePackageName, tableName);
             });
         }
 

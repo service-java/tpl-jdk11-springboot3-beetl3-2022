@@ -1,16 +1,16 @@
 <%
-/*Éú³Émarkdown ÎÄµµ*/
+/*ç”Ÿæˆmarkdown æ–‡æ¡£*/
 %>
 # ${tableName}
 
 
-${isEmpty(comment)?"ÎŞ×¢ÊÍ":comment}
+${isEmpty(comment)?"æ— æ³¨é‡Š":comment}
 
 <%
 var ids = table.idNames;
 %>
 
-| Ãû³Æ | Êı¾İÀàĞÍ | ³¤¶È  |  ËµÃ÷ |
+| åç§° | æ•°æ®ç±»å‹ | é•¿åº¦  |  è¯´æ˜ |
 | :--: | :--- | :------: |  :----: |
 <% for(col in colsMap){
 

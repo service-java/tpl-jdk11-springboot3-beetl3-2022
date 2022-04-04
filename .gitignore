@@ -33,5 +33,5 @@ build/
 .vscode/
 
 ### Ignore AutoGen Files ###
-/src/main/java/com/ibeetlcodegen/
+/src/main/java/com/beetlsqlcodegen/
 /src/main/resources/sql/

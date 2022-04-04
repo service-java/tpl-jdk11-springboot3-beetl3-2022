@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.example.demo.entity.User;
@@ -41,6 +43,23 @@ public class UserController {
         List<User> list = userMapper.listByAge(age);
 
         return list;
+    }
+
+    @GetMapping("/saveBatchDemoDept")
+    @ResponseBody
+    public String saveBatchDemoDept() {
+        var list = new ArrayList<User>();
+
+        User user = null;
+
+        for (int i = 0; i < 12; i++) {
+            user = new User();
+            user.setAge(11);
+            user.setName("user_" + i);
+            list.add(user);
+        }
+        var result = userMapper.saveBatchUser(list);
+        return "插入条数: " + result;
     }
 
 }

@@ -1,15 +1,15 @@
 package com.example.demo.entity;
 
-import java.util.Date;
-
 import com.alibaba.fastjson.annotation.JSONField;
+import lombok.Data;
+import lombok.experimental.Accessors;
 import org.beetl.sql.annotation.entity.AutoID;
 import org.beetl.sql.annotation.entity.Table;
 
-import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
+import java.util.Date;
 
 @Data
+@Accessors(chain = true)
 @Table(name="user")
 public class User {
     @AutoID

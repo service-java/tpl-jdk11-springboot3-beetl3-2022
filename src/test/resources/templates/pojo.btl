@@ -1,12 +1,19 @@
 package ${package};
+
 <%for(impCls in imports){%>
 import ${impCls};
 <%}%>
+
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /*
 * ${comment}
 * @Date ${date(),"yyyy-MM-dd"}
 */
 
+@Data
+@Accessors(chain = true)
 @Table(name="${has(catalog)?(catalog+".")}${table}")
 public class ${className} implements java.io.Serializable {
 	<%include("pojoAttribute.btl"){}%>

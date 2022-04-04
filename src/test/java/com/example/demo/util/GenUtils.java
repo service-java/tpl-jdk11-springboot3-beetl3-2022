@@ -15,34 +15,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Log
-public class GenCodeAndDocUtils {
+public class GenUtils {
 
     public static SQLManager getDataSource(String driver, String url, String userName, String password) {
         ConnectionSource source = ConnectionSourceHelper.getSimple(driver, url, userName, password);
-        // sourceÊÇÎ¨Ò»±ØĞëµÄ²ÎÊı£¬ÆäËû²ÎÊı¶¼ÓĞÄ¬ÈÏÖµ
+        // sourceæ˜¯å”¯ä¸€å¿…é¡»çš„å‚æ•°ï¼Œå…¶ä»–å‚æ•°éƒ½æœ‰é»˜è®¤å€¼
         SQLManagerBuilder builder = new SQLManagerBuilder(source);
-        // ÉèÖÃNameConversion£¬ÕâÀïÊı¾İ¿âÃüÃû²ÉÓÃÏÂ»®Ïß·ç¸ñ£¬Ê¹ÓÃUnderlinedNameConversion
+        // è®¾ç½®NameConversionï¼Œè¿™é‡Œæ•°æ®åº“å‘½åé‡‡ç”¨ä¸‹åˆ’çº¿é£æ ¼ï¼Œä½¿ç”¨UnderlinedNameConversion
         builder.setNc(new UnderlinedNameConversion());
-        // ÉèÖÃÒ»¸öÀ¹½ØÆ÷£¬Êä³ödebugÈÕÖ¾£¬°üº¬ÁËsqlÓï¾äºÍÖ´ĞĞ²ÎÊı£¬Ö´ĞĞÊ±¼ä
+        // è®¾ç½®ä¸€ä¸ªæ‹¦æˆªå™¨ï¼Œè¾“å‡ºdebugæ—¥å¿—ï¼ŒåŒ…å«äº†sqlè¯­å¥å’Œæ‰§è¡Œå‚æ•°ï¼Œæ‰§è¡Œæ—¶é—´
         builder.setInters(new Interceptor[]{new DebugInterceptor()});
-        // ÉèÖÃÊı¾İ¿â·Ö¸ô£¬±ØĞë¸úÊı¾İ¿âÒ»Ñù
+        // è®¾ç½®æ•°æ®åº“åˆ†éš”ï¼Œå¿…é¡»è·Ÿæ•°æ®åº“ä¸€æ ·
         builder.setDbStyle(new MySqlStyle());
         return builder.build();
     }
 
     public static void initGroupTemplate(String tplPath) {
-        //Ö¸¶¨Ä£°åÎÄ¼şÂ·¾¶£¬Õı³£Çé¿öÏÂ£¬²»ĞèÒªÒªÖ¸¶¨£¬Ä¬ÈÏÔÚclasspath:templates£¬µ«ideaµÄ»·¾³¶ÁÈ¡²»µ½
+        //æŒ‡å®šæ¨¡æ¿æ–‡ä»¶è·¯å¾„ï¼Œæ­£å¸¸æƒ…å†µä¸‹ï¼Œä¸éœ€è¦è¦æŒ‡å®šï¼Œé»˜è®¤åœ¨classpath:templatesï¼Œä½†ideaçš„ç¯å¢ƒè¯»å–ä¸åˆ°
         GroupTemplate groupTemplate = BaseTemplateSourceBuilder.getGroupTemplate();
         String root = System.getProperty("user.dir");
 
-        //´úÂëÄ£°åÔÚsql-gen£¬Äã¿ÉÒÔÖ¸¶¨×Ô¼ºµÄÄ£°åÂ·¾¶
+        //ä»£ç æ¨¡æ¿åœ¨sql-genï¼Œä½ å¯ä»¥æŒ‡å®šè‡ªå·±çš„æ¨¡æ¿è·¯å¾„
         String templatePath = root + tplPath;
         FileResourceLoader resourceLoader = new FileResourceLoader(templatePath);
         groupTemplate.setResourceLoader(resourceLoader);
     }
 
     /**
-     * ´úÂëÉú³É£¬Éú³ÉÊµÌå£¬mapper´úÂë
+     * ä»£ç ç”Ÿæˆï¼Œç”Ÿæˆå®ä½“ï¼Œmapperä»£ç 
      */
     public static void genCode(SQLManager sqlManager, String basePackageName, String tableName) {
         List<SourceBuilder> sourceBuilder = new ArrayList<>();
@@ -58,7 +58,7 @@ public class GenCodeAndDocUtils {
 
         config.setPreferDateType(SourceConfig.PreferDateType.LocalDate);
 
-        // Èç¹ûÓĞ´íÎó£¬Å×³öÒì³£¶ø²»ÊÇ¼ÌĞøÔËĞĞ
+        // å¦‚æœæœ‰é”™è¯¯ï¼ŒæŠ›å‡ºå¼‚å¸¸è€Œä¸æ˜¯ç»§ç»­è¿è¡Œ
         EntitySourceBuilder.getGroupTemplate().setErrorHandler(new ReThrowConsoleErrorHandler());
 
         SimpleMavenProject project = new SimpleMavenProject(basePackageName);
@@ -68,7 +68,7 @@ public class GenCodeAndDocUtils {
 
 
     /**
-     * Éú³ÉÊı¾İ¿âÎÄµµ
+     * ç”Ÿæˆæ•°æ®åº“æ–‡æ¡£
      */
     public static void genDoc(SQLManager sqlManager, String basePackageName, String tableName) {
         List<SourceBuilder> sourceBuilder = new ArrayList<>();
@@ -77,7 +77,7 @@ public class GenCodeAndDocUtils {
         sourceBuilder.add(docBuilder);
 
         SourceConfig config = new SourceConfig(sqlManager, sourceBuilder);
-        //Èç¹ûÓĞ´íÎó£¬Å×³öÒì³£¶ø²»ÊÇ¼ÌĞøÔËĞĞ1
+        //å¦‚æœæœ‰é”™è¯¯ï¼ŒæŠ›å‡ºå¼‚å¸¸è€Œä¸æ˜¯ç»§ç»­è¿è¡Œ1
         EntitySourceBuilder.getGroupTemplate().setErrorHandler(new ReThrowConsoleErrorHandler());
 
         SimpleMavenProject project = new SimpleMavenProject(basePackageName);
