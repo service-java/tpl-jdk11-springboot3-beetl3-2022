@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface UserMapper extends BaseMapper<User> {
     @Template("""
+-- sql语法高亮开启
 select * 
 from user 
 where age = #{age}
@@ -17,13 +18,7 @@ order by id
     List<User> listByAge(Integer age);
 
 
-
-
-
-
-
     @Template("""
--- 一行注释
 select *
 from sys_user u
 where 1=1
@@ -35,15 +30,8 @@ order by u.dept_id desc
     List<User> listByUserName(String name);
 
 
-
-
-
-
-
-
-
     @Template("""
-insert into user(name, age, create_time)
+insert into user(`name`, age, create_time)
 values
 -- @trim(){for(item in list) {
 (#{item.name}, #{item.age}, #{item.createTime}),
