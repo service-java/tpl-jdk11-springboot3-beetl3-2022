@@ -6,7 +6,7 @@
 
 # BeetlSQL3与 Mybatis @diff
 
-![](https://luo0412.oss-cn-hangzhou.aliyuncs.com/1649102176935-tw4GWMfZ4Eji.png)
+![](https://luo0412.oss-cn-hangzhou.aliyuncs.com/1649105509749-XFEWaYxkWPsj.png)
 
 ![](https://luo0412.oss-cn-hangzhou.aliyuncs.com/1649101233883-ShAXerhxeK28.png)
 
