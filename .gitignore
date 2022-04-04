@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Ignore AutoGen Files ###
+/src/main/java/com/ibeetlcodegen/
+/src/main/resources/sql/
