@@ -2,8 +2,8 @@ package com.example.demo.mapper;
 
 import com.example.demo.entity.User;
 import org.beetl.sql.mapper.BaseMapper;
-import org.beetl.sql.mapper.annotation.BatchUpdate;
 import org.beetl.sql.mapper.annotation.Template;
+import org.beetl.sql.mapper.annotation.Update;
 
 import java.util.List;
 
@@ -29,12 +29,12 @@ order by u.dept_id desc
     List<User> listByUserName(String name);
 
     @Template("""
-insert into demo_dept(name, date_create)
+insert into user(name, age, create_time)
 values
 -- @trim(){for(item in list) {
-(#{item.name}, #{item.dateCreate}),
+(#{item.name}, #{item.age}, #{item.createTime}),
 -- @}}
             """)
-    @BatchUpdate
+    @Update
     Integer saveBatchUser(List<User> list);
 }

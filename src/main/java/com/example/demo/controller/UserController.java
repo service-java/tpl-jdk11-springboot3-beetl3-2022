@@ -45,21 +45,20 @@ public class UserController {
         return list;
     }
 
-    @GetMapping("/saveBatchDemoDept")
+    @GetMapping("/saveBatchUser")
     @ResponseBody
-    public String saveBatchDemoDept() {
+    public String saveBatchUser() {
         var list = new ArrayList<User>();
 
         User user = null;
 
         for (int i = 0; i < 12; i++) {
             user = new User();
-            user.setAge(11);
-            user.setName("user_" + i);
+            user.setAge(11).setName("user_" + i).setCreateTime(new Date()).setUpdateTime(new Date());
             list.add(user);
         }
         var result = userMapper.saveBatchUser(list);
-        return "插入条数: " + result;
+        return "count: " + result;
     }
 
 }

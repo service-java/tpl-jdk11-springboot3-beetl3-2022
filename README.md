@@ -2,6 +2,7 @@
 
 - http://localhost:8080/api/user/listByAge?age=22
 - http://localhost:8080/api/user/listByName?name=user
+- http://localhost:8080/api/user/saveBatchUser
 
 # BeetlSQL3与 Mybatis @diff
 
