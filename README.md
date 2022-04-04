@@ -3,7 +3,7 @@
 - http://localhost:8080/api/user/listByAge?age=22
 - http://localhost:8080/api/user/listByName?name=user
 
-# BeetlSQL3”ÎMybatis @diff
+# BeetlSQL3‰∏é Mybatis @diff
 
 ![](https://luo0412.oss-cn-hangzhou.aliyuncs.com/1649102176935-tw4GWMfZ4Eji.png)
 

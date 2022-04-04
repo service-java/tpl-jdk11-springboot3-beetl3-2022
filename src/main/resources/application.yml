@@ -9,8 +9,8 @@ spring:
 beetlsql:
   sqlManagers: coreSqlManager
   coreSqlManager:
+    ds: dataSource
     dev: true
-    ds: ds1
     basePackage: com.example.**.mapper
     daoSuffix: Mapper
     sqlPath: mdsql
