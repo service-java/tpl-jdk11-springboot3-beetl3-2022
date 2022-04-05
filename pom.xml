@@ -73,6 +73,13 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- @fix https://blog.csdn.net/Beijing_L/article/details/122730110 -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+			<version>7.15.0</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>

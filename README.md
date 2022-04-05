@@ -16,12 +16,28 @@ mybatis jdk17 @todo
 
 - highlight-string-code
 
-# 代办 @todo
+# 常见问题 @faq
+
+- Flyway不支持mysql版本
+  - https://blog.csdn.net/Beijing_L/article/details/122730110
+
+```
+降到v7.15.0
+```
+
+![](https://luo0412.oss-cn-hangzhou.aliyuncs.com/1649187537556-ACWy3Rpyt5yH.png)
+
+- Flyway - Unable to calculate checksum
+  - https://blog.csdn.net/kida_yuan/article/details/113930069
+
+```
+sql文件要utf8编码
+```
 
 - jdk文本块功能很废, 没办法原生支持 ${} 填充变量值 @fix
 
 ```
-当做函数变量一起传入
+当做函数的变量一起传入
 
 ===
 但调用时会显得麻烦
@@ -29,3 +45,6 @@ mybatis jdk17 @todo
 ```
 
 ![](https://luo0412.oss-cn-hangzhou.aliyuncs.com/1649148500966-hQFGZXRi4fj3.png)
+
+- controller返回结果中文乱码
+  - https://www.cnblogs.com/mzc1997/p/10260024.html

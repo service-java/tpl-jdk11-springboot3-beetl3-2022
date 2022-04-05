@@ -56,7 +56,7 @@ public class UserController {
             list.add(user);
         }
         var result = userMapper.saveBatchUser(list);
-        return "count: " + result;
+        return "插入条数: " + result;
     }
 
 }
