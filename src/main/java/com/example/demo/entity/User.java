@@ -12,6 +12,7 @@ import java.util.Date;
 @Accessors(chain = true)
 @Table(name="user")
 public class User {
+
     @AutoID
     private Long id;
 

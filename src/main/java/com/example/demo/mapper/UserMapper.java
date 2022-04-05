@@ -1,5 +1,6 @@
 package com.example.demo.mapper;
 
+import cn.hutool.core.util.StrUtil;
 import com.example.demo.entity.User;
 import org.beetl.sql.mapper.BaseMapper;
 import org.beetl.sql.mapper.annotation.Template;
@@ -8,6 +9,8 @@ import org.beetl.sql.mapper.annotation.Update;
 import java.util.List;
 
 public interface UserMapper extends BaseMapper<User> {
+    String userCol = "name, age, create_time";
+
     @Template("""
 -- sql语法高亮开启
 select * 
@@ -19,7 +22,7 @@ order by id
 
 
     @Template("""
-select *
+select """+userCol+"""
 from sys_user u
 where 1=1
 -- @if(!isBlank(userName)){
