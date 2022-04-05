@@ -16,6 +16,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @Table(name="${has(catalog)?(catalog+".")}${table}")
 public class ${className} implements java.io.Serializable {
+
 	<%include("pojoAttribute.btl"){}%>
 
 }

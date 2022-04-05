@@ -13,6 +13,8 @@ import java.util.Date;
 @Table(name="user")
 public class User {
 
+    public static String _cols = "id,name,age,create_time";
+
     @AutoID
     private Long id;
 

@@ -8,7 +8,6 @@ import org.beetl.sql.mapper.annotation.Update;
 import java.util.List;
 
 public interface UserMapper extends BaseMapper<User> {
-    String userCol = "name, age, create_time";
 
     @Template("""
 -- sql
@@ -29,14 +28,14 @@ where 1=1
 -- @}          
 order by u.dept_id desc
             """)
-    List<User> listByUserName(String userCol, String name);
+    List<User> listByUserName(String name, String userCol);
 
 
     @Template("""
 insert into user(`name`, age, create_time)
 values
 -- @trim(){for(item in list) {
-(#{item.name}, #{item.age}, #{item.createTime}),
+    (#{item.name}, #{item.age}, #{item.createTime}),
 -- @}}
             """)
     @Update

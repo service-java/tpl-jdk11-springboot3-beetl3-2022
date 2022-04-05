@@ -1,19 +1,17 @@
 package com.example.demo.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import com.example.demo.entity.User;
 import com.example.demo.mapper.UserMapper;
-
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import lombok.extern.java.Log;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Log
 @Controller
@@ -40,7 +38,7 @@ public class UserController {
     public List<User> listByAge(Integer age) {
 
         log.info("param: " + age);
-        List<User> list = userMapper.listByAge(age, UserMapper.userCol);
+        List<User> list = userMapper.listByAge(age, User._cols);
 
         return list;
     }

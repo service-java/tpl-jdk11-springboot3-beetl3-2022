@@ -1,5 +1,6 @@
-<%
-	for(attr in attrs){
+    public static String _cols = "<%for(attr in attrs){%>${attr.name}${attrLP.last ? "" : ","}<%}%>";
+
+<%	for(attr in attrs){
 	if(!isEmpty(attr.comment)){%>
 	/**
 	 * ${attr.comment}
