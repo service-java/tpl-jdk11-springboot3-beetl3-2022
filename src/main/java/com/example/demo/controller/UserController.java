@@ -40,7 +40,7 @@ public class UserController {
     public List<User> listByAge(Integer age) {
 
         log.info("param: " + age);
-        List<User> list = userMapper.listByAge(age);
+        List<User> list = userMapper.listByAge(age, UserMapper.userCol);
 
         return list;
     }

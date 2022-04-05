@@ -1,6 +1,5 @@
 package com.example.demo.mapper;
 
-import cn.hutool.core.util.StrUtil;
 import com.example.demo.entity.User;
 import org.beetl.sql.mapper.BaseMapper;
 import org.beetl.sql.mapper.annotation.Template;
@@ -12,17 +11,17 @@ public interface UserMapper extends BaseMapper<User> {
     String userCol = "name, age, create_time";
 
     @Template("""
--- sql语法高亮开启
-select * 
+-- sql
+select ${userCol}
 from user 
 where age = #{age}
 order by id    
             """)
-    List<User> listByAge(Integer age);
+    List<User> listByAge(Integer age, String userCol);
 
 
     @Template("""
-select """+userCol+"""
+select ${userCol}
 from sys_user u
 where 1=1
 -- @if(!isBlank(userName)){
@@ -30,7 +29,7 @@ where 1=1
 -- @}          
 order by u.dept_id desc
             """)
-    List<User> listByUserName(String name);
+    List<User> listByUserName(String userCol, String name);
 
 
     @Template("""
