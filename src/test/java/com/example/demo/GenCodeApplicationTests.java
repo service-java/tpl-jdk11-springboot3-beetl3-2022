@@ -29,8 +29,8 @@ class GenCodeApplicationTests {
 
     // 要生成的表格名
     List<String> tableNames = Arrays.asList(
-            "user"
-            // , "user_copy"
+//            "user",
+            "user2"
     );
 
     @Test
