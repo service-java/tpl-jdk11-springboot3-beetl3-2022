@@ -59,4 +59,11 @@ public class UserController {
         return "插入条数: " + result;
     }
 
+    @GetMapping("/listJoinUser")
+    @ResponseBody
+    public List<User> listJoinUser() {
+        List<User> users = userMapper.listJoinUser(User._cols);
+        return users;
+    }
+
 }

@@ -40,4 +40,13 @@ values
             """)
     @Update
     Integer saveBatchUser(List<User> list);
+
+    @Template("""
+select distinct u2.name, u2.id, u2.age
+from user2 u2
+left join user3 u3 on u3.name = u2.name
+where u2.id > 5      
+order by u2.id desc      
+            """)
+    List<User> listJoinUser(String userCol);
 }
